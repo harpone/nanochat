@@ -29,6 +29,8 @@ def _document_batches(split, resume_state_dict, tokenizer_batch_size):
     Handles DDP sharding and approximate resume. Each yield is (text_batch, (pq_idx, rg_idx, epoch))
     where text_batch is a list of document strings, indices track position for resumption,
     and epoch counts how many times we've cycled through the dataset (starts at 1).
+
+    NOTE: seems to be entirely shuffled?
     """
     ddp, ddp_rank, ddp_local_rank, ddp_world_size = get_dist_info()
 
